@@ -1,6 +1,6 @@
 import os
 import tempfile
-import pyttsx3
+import streamlit as st
 
 try:
     from google.cloud import texttospeech
@@ -25,10 +25,10 @@ def custom_voice_name(lang_code):
 
 def speak_text(text, lang="en-US"):
     if not text.strip():
-        print("⚠️ Empty text provided to speak.")
+        st.warning("⚠️ Empty text provided to speak.")
         return
 
-    # 1️⃣ Try Google TTS if available
+    # ✅ Try Google TTS if available
     if GOOGLE_TTS_AVAILABLE and os.getenv("GOOGLE_APPLICATION_CREDENTIALS"):
         try:
             client = texttospeech.TextToSpeechClient()
@@ -44,54 +44,29 @@ def speak_text(text, lang="en-US"):
                 audio_encoding=texttospeech.AudioEncoding.MP3
             )
 
-            print(f"🔊 Using Google TTS (language: {lang})")
+            st.info(f"🔊 Speaking using Google TTS (Language: {lang})")
+
             response = client.synthesize_speech(
                 input=input_text,
                 voice=voice,
                 audio_config=audio_config
             )
 
+            # Save to temp MP3
             with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as out:
                 out.write(response.audio_content)
                 temp_file_path = out.name
 
-            # Play using pygame
-            import pygame
-            pygame.init()
-            pygame.mixer.init()
-            pygame.mixer.music.load(temp_file_path)
-            pygame.mixer.music.play()
+            # Play in Streamlit
+            with open(temp_file_path, "rb") as f:
+                audio_bytes = f.read()
 
-            # Wait until done playing
-            while pygame.mixer.music.get_busy():
-                continue
-
-            pygame.mixer.quit()
             os.remove(temp_file_path)
-            return
+            return audio_bytes
+
+
         except Exception as e:
-            print(f"⚠️ Google TTS failed: {e}")
+            st.error(f"⚠️ Google TTS failed: {e}")
 
-    # 2️⃣ Fallback to pyttsx3
-    print("🔊 Falling back to pyttsx3...")
-    try:
-        engine = pyttsx3.init()
-        voices = engine.getProperty('voices')
-
-        # Attempt to match language with available voice
-        selected_voice = None
-        for voice in voices:
-            if lang.split('-')[0] in voice.languages[0].decode('utf-8').lower():
-                selected_voice = voice.id
-                break
-
-        if selected_voice:
-            engine.setProperty('voice', selected_voice)
-
-        engine.setProperty('rate', 170)    # Speed
-        engine.setProperty('volume', 1.0)  # Volume (0.0 to 1.0)
-
-        engine.say(text)
-        engine.runAndWait()
-    except Exception as e:
-        print(f"❌ pyttsx3 also failed: {e}")
+    # ❌ pyttsx3 not supported in cloud – notify user
+    st.error("❌ pyttsx3 fallback not available in web apps. Please upload Google TTS credentials.")

@@ -122,7 +122,6 @@ with tab1:
     st.text_area("Transcript", value=st.session_state["realtime_transcript"], height=250)
 
 # --- TAB 2: Text to Speech ---
-
 with tab2:
     st.header("🔊 Text to Speech")
     tts_mode = st.radio("Choose Mode:", [
@@ -138,17 +137,25 @@ with tab2:
     output_lang_code = lang_map[output_lang]
 
     tts_input = st.text_area("Enter text to speak", key="tts_text_input")
+
     if st.button("🔊 Speak") or st.session_state.get("trigger_speak"):
         if tts_input.strip() != "":
-            speak_text(tts_input, lang=output_lang_code)
+            # Speak and return audio content
+            from utils.text_to_speech import speak_text
+            audio_bytes = speak_text(tts_input, lang=output_lang_code)
+            if audio_bytes:
+                st.audio(audio_bytes, format="audio/mp3")
         else:
             st.warning("⚠️ Please enter some text.")
         st.session_state["trigger_speak"] = False
 
     if tts_mode == "💬 Real-Time Speak While Typing":
         rts_input = st.text_input("Type and press Enter to speak", key="tts_real_input")
-        if rts_input and rts_input.endswith("\n"):
-            speak_text(rts_input.strip(), lang=output_lang_code)
+        if rts_input and rts_input.strip():
+            audio_bytes = speak_text(rts_input.strip(), lang=output_lang_code)
+            if audio_bytes:
+                st.audio(audio_bytes, format="audio/mp3")
+
 
 # --- TAB 3: Text Translator ---
 
