@@ -107,17 +107,18 @@ streamlit run app.py
 ## ✅ Requirements (requirements.txt)
 
 ```txt
-streamlit
-streamlit-webrtc
+streamlit==1.35.0
+streamlit-webrtc==0.45.0
 googletrans==4.0.0rc1
-speechrecognition
-pydub
-pyttsx3
-pygame
-av
-numpy
-ffmpeg-python
-google-cloud-texttospeech
+pydub==0.25.1
+numpy==1.26.4
+av==10.0.0
+SpeechRecognition==3.10.1
+pyttsx3==2.90
+pygame==2.5.2
+ffmpeg-python==0.2.0
+google-cloud-texttospeech==2.15.3
+
 ```
 
 ---
