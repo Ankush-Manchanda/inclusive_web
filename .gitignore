@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+google_key.json
+*.mp3
+*.wav
+*.m4a
+*.log
+*.DS_Store
+*.idea/
+.vscode/
