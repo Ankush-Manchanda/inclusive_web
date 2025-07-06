@@ -2,7 +2,12 @@
 
 InclusiveWeb is a Streamlit-based application that empowers accessibility through real-time subtitles, text-to-speech, and language translation. This tool is designed especially for differently-abled users — including those with hearing, speech, or language barriers — offering a more inclusive digital experience.
 
----
+-------------------------------------------------
+
+🎬 Demo
+👉 [Live Demo Link Here](https://your-demo-link.com)
+
+-------------------------------------------------
 
 ## 🚀 Features
 
@@ -25,11 +30,11 @@ InclusiveWeb is a Streamlit-based application that empowers accessibility throug
 - 💡 Real-time text translation as the user types.
 - 📘 Uses `googletrans` for fast and free translation.
 
----
+-------------------------------------------------
 
 ## 🛠️ Technology Stack
 
-| Layer            | Technology Used                             |
+| Layer            | Technology Used                              |
 |------------------|----------------------------------------------|
 | Frontend UI      | `Streamlit`                                  |
 | Audio Processing | `speechrecognition`, `pydub`, `ffmpeg`       |
@@ -38,7 +43,7 @@ InclusiveWeb is a Streamlit-based application that empowers accessibility throug
 | Webcam Streaming | `streamlit-webrtc`                           |
 | Audio Playback   | `pygame`                                     |
 
----
+-------------------------------------------------
 
 ## 🧩 Project Structure
 
@@ -57,7 +62,7 @@ InclusiveWeb/
 └── google_key.json           # Google Cloud credentials (keep safe!)
 ```
 
----
+-------------------------------------------------
 
 ## 🔐 Google Cloud TTS Setup (Optional for Online Use)
 
@@ -74,14 +79,14 @@ set GOOGLE_APPLICATION_CREDENTIALS=google_key.json   # Windows
 export GOOGLE_APPLICATION_CREDENTIALS=google_key.json # macOS/Linux
 ```
 
----
+-------------------------------------------------
 
 ## 🧪 Installation & Running Locally
 
 1. Clone the repo:
 ```bash
-git clone https://github.com/yourusername/InclusiveWeb.git
-cd InclusiveWeb
+git clone https://github.com/yourusername/Inclusive_Web.git
+cd Inclusive_Web
 ```
 
 2. Create a virtual environment (recommended):
@@ -102,7 +107,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
----
+-------------------------------------------------
 
 ## ✅ Requirements (requirements.txt)
 
@@ -120,7 +125,7 @@ ffmpeg-python
 google-cloud-texttospeech
 ```
 
----
+-------------------------------------------------
 
 ## 💡 Future Enhancements
 
@@ -128,7 +133,7 @@ google-cloud-texttospeech
 - 👀 OCR for extracting text from images
 - 📶 Progressive Web App (PWA) support for offline mode
 
----
+-------------------------------------------------
 
 ## 👤 Author
 
@@ -138,7 +143,8 @@ google-cloud-texttospeech
 🔗 [GitHub](https://github.com/Ankush-Manchanda)
 📧[007anjalichauhan@gmail.com](mailto:007anjalichauhan@gmail.com)
 🔗[GitHub](https://github.com/Anjali-codehub)
----
+
+-------------------------------------------------
 
 ## 📄 License
 
