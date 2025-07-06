@@ -10,3 +10,4 @@ numpy
 ffmpeg-python  
 google-cloud-texttospeech  
 opencv-python
+moviepy
