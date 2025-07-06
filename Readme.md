@@ -5,7 +5,7 @@ InclusiveWeb is a Streamlit-based application that empowers accessibility throug
 -------------------------------------------------
 
 🎬 Demo
-👉 [Live Demo Link Here](inclusiveweb-tpipp5jerhgbubn9kfdmhu.streamlit.app)
+👉 [Live Demo Link Here](https://inclusiveweb-tpipp5jerhgbubn9kfdmhu.streamlit.app)
 
 -------------------------------------------------
 
